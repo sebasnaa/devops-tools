@@ -2,12 +2,7 @@ name: CI Workflow
 
 # Disparadores: Ejecutar el workflow cuando se haga push o se cree un pull request en la rama main
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 # Definir los trabajos que se ejecutarán
 jobs:
