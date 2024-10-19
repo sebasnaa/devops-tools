@@ -1,0 +1,36 @@
+name: CI Workflow
+
+# Disparadores: Ejecutar el workflow cuando se haga push o se cree un pull request en la rama main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Definir los trabajos que se ejecutarán
+jobs:
+  build:
+    # En qué sistema operativo se ejecutará (Ubuntu)
+    runs-on: ubuntu-latest
+
+    # Pasos del workflow
+    steps:
+      # Paso 1: Usar la acción para configurar el repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar la versión de Node.js (si es un proyecto de Node.js)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Paso 3: Instalar dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # Paso 4: Ejecutar los tests
+      - name: Run tests
+        run: npm test
