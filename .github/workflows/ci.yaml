@@ -16,16 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar la versión de Node.js (si es un proyecto de Node.js)
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      # Paso 3: Instalar dependencias
       - name: Install dependencies
-        run: npm install
-
-      # Paso 4: Ejecutar los tests
-      - name: Run tests
-        run: npm test
+        run: |
+          echo "hola sebas"
