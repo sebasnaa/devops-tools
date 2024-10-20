@@ -19,3 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           echo "hola sebas"
+          
+      # Notify Microsoft Teams after the build
+      - name: Send message to Microsoft Teams
+        if: success()  # Only send if the previous steps succeeded
+        run: |
+          curl -H 'Content-Type: application/json' \
+               -d '{"text": "✅ Build succeeded on branch: ${{ github.ref_name }}"}' \
+               ${{ secrets.TEAMS_WEBHOOK_URL }}
